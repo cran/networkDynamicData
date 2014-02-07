@@ -1,0 +1,14 @@
+92df924751166093a83144b537b17499 *DESCRIPTION
+394ac916c539e471abf212b18e5faa54 *LICENSE
+8b54e5a89fbda3af5e077053d40bec76 *NAMESPACE
+80869d2ccf50657b22a36f35cbd507a8 *data/concurrencyComparisonNets.rda
+7db10c75b5e39ce93d8496077bf9b53a *data/harry_potter_support.rda
+71a6f2af953057fa0fd9935e971862ff *data/hospital_contact.rda
+b293d949270481895f86c2143b3e37fe *data/onlineNetwork.rda
+7ef83dd432f998647d24b9be7e6ffb51 *data/vanDeBunt_students.rda
+fb37c9680e1f59e375a2339d26970920 *man/concurrencyComparisonNets.Rd
+3a5648f8a17bcce2a70f71cca2a943d7 *man/harry_potter.Rd
+1ddcb0ddc025f76f8a95a1da540f91a7 *man/hospital.Rd
+883ef721c07706775ffaad1c4a406fac *man/networkDynamicData-package.Rd
+3b1be0cd33b830af349b69b6fe74d656 *man/onlineNet.Rd
+8e2d6c4b2f90c28ddba05022d5ee9550 *man/vanDeBunt_students.Rd
