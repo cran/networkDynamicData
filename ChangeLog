@@ -1,0 +1,8 @@
+
+v 0.2
+  - updated contributor list
+  - included dynamic version of the Davis et al Southern Women bipartite network dataset
+  - included manufacturing emails network of Radoslaw Michalski, et al
+  - included enron emails network of C.E. Priebe, Youngser Park, et al 
+v 0.1
+  - initial release

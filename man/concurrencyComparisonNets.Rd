@@ -8,12 +8,8 @@
 A synthetic dataset of three simulated dynamic networks with epidemic spread.
 }
 \description{
-Three single-mode undirected dynamic networks with an infection started from a single seed, 
-The networks were simulated using the tergm and EpiModel packages.
-All three networks have the same size, relationship duration distribution and cross-sectional mean degree,  
-but different cross-sectional degree distributions. They are intended as examples for 
-illustrating and comparing the effects of concurrent overlapping partnerships on the
-connectivity and dynamic transmission potential of networks.  
+Three single-mode undirected dynamic networks with an infection started from a single seed, The networks were simulated using the tergm and EpiModel packages. All three networks have the same size, relationship duration distribution and cross-sectional mean degree,  but different cross-sectional degree distributions. They are intended as examples for 
+illustrating and comparing the effects of concurrent overlapping partnerships on the connectivity and dynamic transmission potential of networks.  
 }
 \usage{data(concurrencyComparisonNets)}
 \format{
@@ -51,7 +47,7 @@ Each network has a dynamic 'status' nodal attribute indicating the
 infection status of each node at each timestep in each network.  Comparison of the
 prevalence and trajectories of the status variable provide insight into the
 impact of concurrent partnerships on network connectivity and
-transmission potential.
+transmission potential. Note that the first infected state does not occur until time 2. 
 
 The networks were simulated using the EpiModel package and the code below.
 
@@ -75,37 +71,41 @@ Morris M., Kurth A., Hamilton D.T., Moody J., and Wakefield S., for The Network 
 Jenness S, Goodreau S, Wang L and Morris M (2014). \emph{EpiModel: Mathematical Modeling of Infectious Disease}. The Statnet Project
 (\url{http://www.statnet.org}). R package version 0.95, \url{CRAN.R-project.org/package=EpiModel}.
 }
+
+
 \examples{
 data(concurrencyComparisonNets)
+
+\dontrun{
 
 # compare plots of each network at time 50
 plot(network.extract(base,at=50),vertex.cex=0.5,edge.lwd=2)
 plot(network.extract(monog,at=50),vertex.cex=0.5,edge.lwd=2)
 plot(network.extract(middle,at=50),vertex.cex=0.5,edge.lwd=2)
 
-# compare mean degree. These are at ~20, due to censoring
+# compare mean duration. These are at ~20, due to censoring
 mean(as.data.frame(base)$duration)
 mean(as.data.frame(middle)$duration)
 mean(as.data.frame(monog)$duration)
 
 # compare infection time series
-\dontrun{
+
 plot(sapply(1:100,function(t){
-    sum(get.vertex.attribute.active(base,'status',at=t))
+    sum(get.vertex.attribute.active(base,'status',at=t)==1)
   }),col='black',xlab='time step', ylab='# infected'
 )
 points(sapply(1:100,function(t){
-     sum(get.vertex.attribute.active(monog,'status',at=t))
+     sum(get.vertex.attribute.active(monog,'status',at=t)==1)
    }),col='blue')
 points(sapply(1:100,function(t){
-     sum(get.vertex.attribute.active(conc,'status',at=t))
+     sum(get.vertex.attribute.active(middle,'status',at=t)==1)
    }),col='red')
 }   
 
-## The code below was used to generate the three example networks using EpiModel
-## note that 'conc' is renamed 'middle' and the networks have 
-## some attached simulation control variables deleted before 
-## being saved as the datasets 
+## The code below can be used generate the three example networks using EpiModel (v1.1.2)
+## note that the networks have some attached simulation control variables deleted before 
+## being saved as the datasets. More recent versions of EpiModel use a different
+## representation of the infection status variable. 
 
 \dontrun{
 
@@ -124,7 +124,7 @@ params.base = list(
   dissolution = ~offset(edges)
 )
 
-params.conc = list(
+params.middle = list(
   sim.length = 100,
   size = 1000,
   mean.deg = .75,
@@ -151,7 +151,7 @@ params.monog = list(
 
 # === function for estimating stergm, simulating network, and simulating epidemic ===
 
-net.init = function(params, nsims, adjust=F) {
+net.init <- function(params, nsims, adjust=F) {
   for (name in names(params)) assign(name, params[[name]])
   
   message('network init')
@@ -159,7 +159,7 @@ net.init = function(params, nsims, adjust=F) {
   # generate initial network (defaults if not specified in params)
   if (!exists('net', inherits=F)) {
     net <- network.initialize(size,directed=F)
-    net \%v\% 'race' <- rep(0:1, each=250)
+    net
   }
   if (!exists('formation', inherits=F)) {
     formation = ~edges
@@ -186,41 +186,48 @@ net.init = function(params, nsims, adjust=F) {
     target.stats = target.edges
   }
   
-  coef.diss <- dissolution.coefs(dissolution, mean.rel.dur)
+  coef.diss <- dissolution_coefs(dissolution, mean.rel.dur)
   
   # estimate the stergm
   
-  net.est = epiNet.est(net, formation, dissolution, target.stats, coef.diss
-                       ,control=control.ergm(MCMLE.maxit=200))
+  net.est = netest(net, formation, dissolution, target.stats, coef.diss
+                       ,set.control.ergm=control.ergm(MCMLE.maxit=200))
   
   stats.form = update(formation, ~.+concurrent)
   
   # simulate the dynamic network
+  #net.sim = netsim(net.est, nsteps = sim.length, nsims=nsims, stats.form=stats.form,
+  #                        control = control.simulate.network(MCMC.burnin.add=10))
+        
+  # simulate the network dynamics and the epidemic      
+  net.sim = netsim(net.est, 
+                   param.net(inf.prob=1),
+                   init.net(i.num=1),
+                   control.net(type='SI',
+                               nsteps = sim.length, 
+                               nsims=nsims,
+                               keep.network = TRUE)
+                   )
+                               
   
-  net.sim = epiNet.simNet(net.est, nsteps = sim.length, nsims=nsims, stats.form=stats.form,
-                          control = control.simulate.network(MCMC.burnin.add=10))
   
-  # simulate the epidemic
   
-  trans.sim = epiNet.simTrans(net.sim, "SI", vital=FALSE, i.num=1, trans.rate=1, tea=TRUE)
+  #trans.sim = epiNet.simTrans(net.sim, "SI", vital=FALSE, i.num=1, trans.rate=1, tea=TRUE)
   
-  print(summary(net.sim$stats[[1]]))
-  plot(net.sim$stats[[1]][,'edges'], ylab='edges', xlab='time')
+  #print(summary(net.sim$stats[[1]]))
+  #plot(net.sim$stats[[1]][,'edges'], ylab='edges', xlab='time')
   
-  return(trans.sim)
+  return(get_network(net.sim, sim = 1))
 }
 
 
 # === simulate example networks ===
 
-base.sims = net.init(params.base, 1)
-base = base.sims$network[[1]]
+base <- net.init(params.base, 1)
 
-conc.sims = net.init(params.conc, 1)
-conc = conc.sims$network[[1]]
+middle <- net.init(params.middle, 1)
 
-monog.sims = net.init(params.monog, 1)
-monog = monog.sims$network[[1]]
+monog <- net.init(params.monog, 1)
 
 }
 

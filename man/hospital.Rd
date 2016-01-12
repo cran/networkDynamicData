@@ -107,7 +107,7 @@ P. Vanhems et al., Estimating Potential Infection Transmission Routes in Hospita
 }
 \examples{
 data(hospital_contact)
-
+\dontrun{
 # get an overview of temporal density
 plot(table(get.edge.activity(hospital,as.spellList=TRUE)[,1]),
 xlab='time',ylab='activity count',col="#00000055")
@@ -129,6 +129,6 @@ plot(slice,vertex.col=rolecolors(slice\%v\%'role'),
 # plot one hour of interaction
 plot(network.extract(hospital,onset=160000,terminus=163600),
 vertex.cex=0.5,vertex.col=rolecolors(hospital\%v\%'role'))
-
+}
 }
 \keyword{datasets}
