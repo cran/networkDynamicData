@@ -10,7 +10,7 @@ This dataset contains the SocioPatterns temporal network of contacts between pat
 }
 \usage{data(hospital)}
 \format{
-  The format is is a \link{networkDynamic} object.
+  The format is is a \link[networkDynamic]{networkDynamic} object.
   The network contains the vertex attribute \code{role} with the values: 
   \itemize{
   \item \code{'NUR'}=paramedical staff, i.e. nurses and nurses' aides; 
@@ -99,11 +99,11 @@ Corinne Regis, Byeul-a Kim, Brigitte Comte, Nicolas Voirin.  info@sociopatterns.
 }
 \source{
 \url{http://www.sociopatterns.org/datasets/hospital-ward-dynamic-contact-network/}
-\url{http://www.plosone.org/article/info\%3Adoi\%2F10.1371\%2Fjournal.pone.0073970}
+\url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0073970}
 }
 
 \references{
-P. Vanhems et al., Estimating Potential Infection Transmission Routes in Hospital Wards Using Wearable Proximity Sensors, PLoS ONE 8(9): e73970 (2013). \url{http://www.plosone.org/article/info\%3Adoi\%2F10.1371\%2Fjournal.pone.0073970}
+P. Vanhems et al., Estimating Potential Infection Transmission Routes in Hospital Wards Using Wearable Proximity Sensors, PLoS ONE 8(9): e73970 (2013). \url{https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0073970}
 }
 \examples{
 data(hospital_contact)

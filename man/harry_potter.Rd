@@ -19,7 +19,7 @@ Goele Bossaert and Nadine Meidert have coded the peer-support ties observed betw
 }
 \usage{data(harry_potter_support)}
 \format{
-  The format is is a \link{networkDynamic} object with node and edge \link{activity.attribute}s.
+  The format is is a \link[networkDynamic]{networkDynamic} object with node and edge \link[networkDynamic]{activity.attribute}s.
 }
 \details{
 The data in this network was originally collected Goele Bossaert and Nadine Meidert in 2013. They made the data available for general use at \url{http://www.stats.ox.ac.uk/~snijders/siena/HarryPotterData.html} and it was downloaded and converted to a \code{networkDynamic} object.   
@@ -40,11 +40,11 @@ interactions occurring between two living characters, attending Hogwarts at the 
 
 The network contains the following vertex attributes:
 
-\itemize{
+\describe{
  \item{id:}{ the integer id used by Bossaert and Meidert in their paper} 
  \item{schoolyear:}{ year at which students first attended Hogwarts}
  \item{gender:}{1 is male, 2 is female}
- \item{house:} {number indicating which house student was a member of. 1=Gryffindor, 2=Hufflepuff, 3=Ravenclaw, 4=Slytherin
+ \item{house:}{number indicating which house student was a member of. 1=Gryffindor, 2=Hufflepuff, 3=Ravenclaw, 4=Slytherin
 }
  \item{vertex.names:}{ The full name of each student}
 hpnames.txt the names! 
@@ -59,7 +59,7 @@ Siena datasets: \url{http://www.stats.ox.ac.uk/~snijders/siena/HarryPotterData.h
 }
 
 \references{
-Goele Bossaert and Nadine Meidert (2013). 'We are only as strong as we are united, as weak as we are divided'. A dynamic analysis of the peer support networks in the Harry Potter books. \cite{Open Journal of Applied Sciences}, Vol. 3 No. 2, pp. 174-185. \url{http://dx.doi.org/10.4236/ojapps.2013.32024}
+Goele Bossaert and Nadine Meidert (2013). 'We are only as strong as we are united, as weak as we are divided'. A dynamic analysis of the peer support networks in the Harry Potter books. \cite{Open Journal of Applied Sciences}, Vol. 3 No. 2, pp. 174-185. \doi{10.4236/ojapps.2013.32024}
 
 }
 \examples{

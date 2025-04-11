@@ -59,17 +59,17 @@ Please cite the dataset authors and the networkDynamicData package (\code{citati
 }
 }
 \author{
-Martina Morris \url{morrism@uw.edu} and Li Wang \url{lxwang@gmail.com}
+Martina Morris \email{morrism@uw.edu} and Li Wang \email{lxwang@gmail.com}
 }
 
 \source{
-\url{http://statnet.org}
+\url{https://statnet.org}
 }
 \references{
 Morris M., Kurth A., Hamilton D.T., Moody J., and Wakefield S., for The Network Modeling Group (2009) "Concurrent Partnerships and HIV Prevalence Disparities by Race: Linking Science and Public Health Practice" \emph{American Journal of Public Health} 1023-1031, Vol 99, No. 6 
 
 Jenness S, Goodreau S, Wang L and Morris M (2014). \emph{EpiModel: Mathematical Modeling of Infectious Disease}. The Statnet Project
-(\url{http://www.statnet.org}). R package version 0.95, \url{CRAN.R-project.org/package=EpiModel}.
+(\url{https://statnet.org}). R package version 0.95, \url{https://CRAN.R-project.org/package=EpiModel}.
 }
 
 

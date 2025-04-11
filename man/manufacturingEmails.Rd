@@ -39,7 +39,7 @@ structure, there was no distinction between To, CC and BCC recipients. The resul
 set of data contained 11,816 emails in total.
 }
 \source{
-\code{radoslaw.michalski <at> pwr.edu.pl} \url{http://www.ii.pwr.wroc.pl/~michalski/index.php?content=datasets#manufacturing} and 
+\code{radoslaw.michalski <at> pwr.edu.pl} \url{https://www.ii.pwr.wroc.pl/~michalski/index.php?content=datasets} and 
 
 }
 \references{

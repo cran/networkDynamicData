@@ -1,4 +1,6 @@
-
+v 0.3
+  - updating documentation links
+  - CRAN-requested documentation structure corrections
 v 0.2
   - updated contributor list
   - included dynamic version of the Davis et al Southern Women bipartite network dataset

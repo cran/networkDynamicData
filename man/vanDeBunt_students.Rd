@@ -18,7 +18,7 @@ Multiple levels of friendship ties among students reported at 7 time points.  Th
 }
 \usage{data(vanDeBunt_students)}
 \format{
-  The format is is a \link{networkDynamic} object with node and edge \link{activity.attribute}s.
+  The format is is a \link[networkDynamic]{networkDynamic} object with node and edge \link[networkDynamic]{activity.attribute}s.
 }
 \details{
 The dataset was acquired from \url{http://www.stats.ox.ac.uk/~snijders/siena/vdBunt_data.htm}. The information below is adapted from the description page:
@@ -42,14 +42,14 @@ Next to the sociometric data, available individual characteristics are sex, educ
 
 The network contains the following vertex attributes:
 
-\itemize{
+\describe{
  \item{gender:}{ integer, 1 is female, 2 is male}
- \item{program:} { integer, 2=2-year, 3=3-year, 4=4-year}
+ \item{program:}{ integer, 2=2-year, 3=3-year, 4=4-year}
  \item{smoking:}{ integer,1 = yes, 2 = no}
  \item{vertex.names:}{integer matrix id used in the input files}
 }
 
-As this network was observed at unequal intervals, the \code{\link{net.obs.period}} attribute provides information on the duration between observation windows. 
+As this network was observed at unequal intervals, the \code{net.obs.period} attribute provides information on the duration between observation windows. 
 
 
 }

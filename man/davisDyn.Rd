@@ -6,7 +6,7 @@
 dynamic versions of the Southern Women Data Set (Davis)
 }
 \description{
-This is a data set of 18 women observed over a nine-month period. During that period, various subsets of these women had met in a series of 14 informal social events. The data recored which women met for which events. The data is originally from Davis, Gardner and Gardner (1941) via UCINET and stored as a \code{\link{networkDynamic}} object.  
+This is a data set of 18 women observed over a nine-month period. During that period, various subsets of these women had met in a series of 14 informal social events. The data recored which women met for which events. The data is originally from Davis, Gardner and Gardner (1941) via UCINET and stored as a \code{\link[networkDynamic]{networkDynamic}} object.  
 }
 \usage{
 data("davisDyn")
@@ -14,7 +14,7 @@ data("davisActorDyn")
 }
 
 \format{
-  a \code{\link{networkDynamic}} data object
+  a \code{\link[networkDynamic]{networkDynamic}} data object
 }
 \details{
 This version includes event timings according to the chart extracted by Berger-Wolf from Davis, et al. stored as instantaneous events in numeric POSIX time. In both networks the vertices are marked as 'always active', although the actuall availibility for event membership is not known.  This version includes the two (overlapping) group classifications reported by Davis, et al. (via Freeman).  The name "Myra" is corrected from the latentnet version of the dataset.  

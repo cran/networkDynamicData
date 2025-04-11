@@ -1,10 +1,10 @@
 Package: networkDynamicData
 Type: Package
 Title: Dynamic (Longitudinal) Network Datasets
-Version: 0.2.1
-Date: 2016-01-11
+Version: 0.3.0
+Date: 2025-04-10
 Authors@R: c(
-  	person("Skye", "Bender-deMoll", role=c("cre"), email="skyebend@uw.edu"),
+  	person("Skye", "Bender-deMoll", role=c("cre","aut"), email="skyebend@uw.edu"),
     person("Martina", "Morris", role=c("ctb"), email="morrism@u.washington.edu"),
     person("Li", "Wang", role=c("ctb"), email="lxwang@gmail.com"),
     person("Gerhard","van de Bunt",role=c("ctb"), email="g.g.vande.bunt@vu.nl"),
@@ -19,10 +19,10 @@ Authors@R: c(
 Depends: R (>= 3.0),networkDynamic (>= 0.6), network (>= 1.9)
 Description: A collection of dynamic network data sets from various sources and multiple authors represented as 'networkDynamic'-formatted objects.
 License: GPL-3 + file LICENSE
-URL: http://statnet.org
+URL: https://statnet.org
 NeedsCompilation: no
-Packaged: 2016-01-11 20:38:54 UTC; rpackagebuilder
-Author: Skye Bender-deMoll [cre],
+Packaged: 2025-04-10 18:46:30 UTC; skyebend
+Author: Skye Bender-deMoll [cre, aut],
   Martina Morris [ctb],
   Li Wang [ctb],
   Gerhard van de Bunt [ctb],
@@ -35,4 +35,4 @@ Author: Skye Bender-deMoll [cre],
   C.E. Priebe, (et. al.) [ctb]
 Maintainer: Skye Bender-deMoll <skyebend@uw.edu>
 Repository: CRAN
-Date/Publication: 2016-01-12 00:23:27
+Date/Publication: 2025-04-11 08:20:10 UTC
